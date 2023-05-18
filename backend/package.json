@@ -1,0 +1,42 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "simple multi-role authentication app",
+  "main": "server.js",
+  "devDependencies": {
+    "concurrently": "^7.1.0",
+    "nodemon": "^2.0.22"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "scripts": {
+    "start": "nodemon server.js",
+    "server": "nodemon server.js",
+    "dev": "concurrently \" npm run server \" \" npm start --prefix ../frontend \""
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "babelrc": "^0.0.7",
+    "bad-words": "^3.0.4",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cloudinary": "^1.36.4",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "helmet": "^6.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "moment-timezone": "^0.5.43",
+    "mongoose": "^6.3.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "multer-storage-cloudinary": "^4.0.0",
+    "path": "^0.12.7",
+    "sharp": "^0.32.0",
+    "uuidv4": "^6.2.13"
+  }
+}

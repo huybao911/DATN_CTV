@@ -69,6 +69,17 @@ exports.getEventApprove = async (req, res) => {
   }
 };
 
+exports.getEventApproveSuccess = async (req, res) => {
+  const smanagerUser = await User.findById(req?.smanager?._id);
+  const smanagerPost = await Event.find({ approver: smanagerUser }).populate("poster").populate({ path: "poster", populate: [{ path: "department" }] }).populate("approver").populate("departmentEvent").populate({ path: "comments", populate: [{ path: "commenter" }] }).populate("approver").populate("departmentEvent").populate({ path: "usersApplyJob", populate: [{ path: "userApply", populate: [{ path: "department" }] }] }).populate({ path: "usersApplyJob", populate: [{ path: "jobEvent", populate: [{ path: "event" }] }] });;
+  try {
+    if (!req.smanager) return res.status(400).send("You dont have permission");
+    return res.status(200).json(smanagerPost);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+};
+
 exports.approveEvent = async (req, res) => {
   const { id } = req.params;
   const userApprove = await User.findById(req?.smanager?._id);

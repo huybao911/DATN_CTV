@@ -207,6 +207,29 @@ export const getDepartments =
     }
   };
 
+//GET_EVENT
+export const getEvent =
+  () => async (dispatch: Dispatch<SManagerActions | AlertActions>) => {
+    const config: any = {
+      header: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      const { data } = await axios.get(`${URI}/events`, config);
+      dispatch({ type: types.GET_EVENTS, payload: data });
+    } catch (error: any) {
+      dispatch<any>(
+        setAlert({
+          msg: "Xảy ra lỗi khi lấy dữ liệu event!",
+          status: error.response.status,
+          alertType: "error",
+        })
+      );
+    }
+  };
+
 //GET_EVENTAPPROVE_SMANAGER
 export const getEventApprove =
   () => async (dispatch: Dispatch<SManagerActions | AlertActions>) => {

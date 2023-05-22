@@ -128,8 +128,20 @@ const FeedManageJob: React.FC<Props> = ({ event }): JSX.Element => {
                                                 {job.jobEvent.nameJob}
                                             </Box>
                                             <Box flexGrow={1} />
-                                            <Box>
-
+                                            <Box sx={{ marginTop: "50px", fontWeight: "bold" }}>
+                                                {job.acceptStatus == "Chờ phê duyệt" ? (
+                                                    <Box>
+                                                        Chưa có thông báo nhận lương
+                                                    </Box>
+                                                ) : job.acceptStatus == "Duyệt" ? (
+                                                    <Box sx={{ color: "#00B14F" }}>
+                                                        {job.notiAccept}
+                                                    </Box>
+                                                ) : job.acceptStatus == "Không Duyệt" ? (
+                                                    <Box sx={{ color: "red" }}>
+                                                        {job.notiAccept}
+                                                    </Box>
+                                                ) : null}
                                             </Box>
                                         </Box>
 
@@ -146,11 +158,15 @@ const FeedManageJob: React.FC<Props> = ({ event }): JSX.Element => {
                                                 <Box sx={{ fontSize: "15px", marginTop: "20px", marginLeft: "35px" }}>
                                                     Mô tả: {job.jobEvent.jobDescription}
                                                 </Box>
+                                                <Box sx={{ fontSize: "15px", marginTop: "20px", marginLeft: "35px" }}>
+                                                    Quyền lợi: {job.jobEvent.benefit}
+                                                </Box>
                                             </Box>
                                             <Box flexGrow={1} />
-                                            <Button style={{color:"green"}} target='_blank' href={event.ggSheet} rel="noopener noreferrer">
+                                            <Button style={{ color: "green" }} target='_blank' href={event.ggSheet} rel="noopener noreferrer">
                                                 Link chi tiết công việc
                                             </Button>
+
                                         </Box>
                                     </CardContent>
 

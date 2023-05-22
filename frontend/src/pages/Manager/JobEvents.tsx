@@ -80,6 +80,7 @@ interface DataUser {
   quantity: keyof IJobEvent;
   unitPrice: keyof IJobEvent;
   jobDescription: keyof IJobEvent;
+  benefit: keyof IJobEvent;
   update: keyof IJobEvent;
   delete: keyof IJobEvent;
 }
@@ -115,6 +116,11 @@ const headCells: HeadCell[] = [
     _id: 'jobDescription',
     numeric: false,
     label: 'Mô tả công việc',
+  },
+  {
+    _id: 'benefit',
+    numeric: false,
+    label: 'Yêu cầu công việc',
   },
   {
     _id: 'update',
@@ -340,11 +346,13 @@ const JobEvent: React.FC = (): JSX.Element => {
 
                       <TableCell align="left" sx={{ fontSize: '12px' }}>
                         {jobEvent.unitPrice}
-
                       </TableCell>
 
                       <TableCell align="left" sx={{ fontSize: '12px' }}>
                         {jobEvent.jobDescription}
+                      </TableCell>
+                      <TableCell align="left" sx={{ fontSize: '12px' }}>
+                        {jobEvent.benefit}
                       </TableCell>
                       <TableCell align="right">
                         <Button size="large" color="inherit" onClick={(jobEvent) => handleOpenMenu(jobEvent, index)} >

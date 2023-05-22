@@ -183,12 +183,27 @@ const FeedDetailContent: React.FC<Props> = ({ event }): JSX.Element => {
                                     fontWeight: 500,
                                     gap: 5
                                 }}>
+                                    Quyền lợi:
+                                </FormControl>
+                                <FormControl style={{ textAlign: 'left', fontSize: '14px', fontWeight: '1000' }}>
+                                    {job.benefit}
+                                </FormControl>
+                                <FormControl sx={{ textAlign: 'left' }} />
+
+                                <FormControl sx={{
+                                    textAlign: 'left',
+                                    fontSize: '14px',
+                                    color: '#757575',
+                                    fontWeight: 500,
+                                    gap: 5
+                                }}>
                                     Số lượng:
                                 </FormControl>
                                 <FormControl style={{ textAlign: 'left', fontSize: '14px', fontWeight: '1000' }}>
                                     {job.quantityRemaining}
                                 </FormControl>
                                 <FormControl sx={{ textAlign: 'left' }} />
+
                             </Box>
                         )}
                     </BoxDetails>

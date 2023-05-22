@@ -128,6 +128,14 @@ const routesProps: ROUTES[] = [
     auth: true,
   },
   {
+    name: "eventAccept",
+    path: "/eventAccept",
+    component: React.lazy(() => import("pages/SManager/EventAccept")),
+    exact: true,
+    keyRole: "smanager",
+    auth: true,
+  },
+  {
     name: "approveEvent",
     path: "/approveEvent",
     component: React.lazy(() => import("pages/SManager/ApproveEvents")),

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getListUserApply, approveUserApplyJob, unapproveUserApplyJob } from "redux/actions/Manager";
 import { RootState } from "redux/reducers";
 import { IEvent } from "redux/types/event";
-import { Avatar, TableSortLabel, IconButton, Toolbar, OutlinedInput, InputAdornment, Button, Card, Container, Popover, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from "@mui/material";
+import { Avatar, TableSortLabel, IconButton, Toolbar, OutlinedInput, InputAdornment, Button, Card, Container, Popover, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography, FormControl } from "@mui/material";
 // @mui
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
@@ -172,12 +172,12 @@ function EnhancedTableHead(props: EnhancedTableProps) {
   );
 }
 interface RouteParams {
-    id: string
+  id: string
 }
 const Users: React.FC = (): JSX.Element => {
 
-    const dispatch = useDispatch();
-    const params = useParams<RouteParams>();
+  const dispatch = useDispatch();
+  const params = useParams<RouteParams>();
 
 
   const [events, setEvents] = React.useState<IEvent[]>([]);
@@ -355,24 +355,71 @@ const Users: React.FC = (): JSX.Element => {
                               }}
                             >
                               <Box style={{ display: "flex", flexDirection: "column" }}>
+                                <Avatar src={job.userApply.avatar} sx={{ display: "flex", margin: "auto", height: "70px", width: "70px", marginTop: "5px", marginBottom: "10px" }} />
                                 <Box sx={{ textAlign: "center", fontWeight: "bold", marginBottom: "10px" }}>
-                                  Thông tin của {job.userApply.username}
+                                  {job.userApply.username}
                                 </Box>
-                                <Avatar src={job.userApply.avatar}/>
-                                <Box>
-                                  Tên: {job.userApply.fullName}
-                                </Box>
-                                <Box>
-                                  Khoa: {job.userApply.department.nameDepartment}
-                                </Box>
-                                <Box>
-                                  MSSV: {job.userApply.mssv}
-                                </Box>
-                                <Box>
-                                  Lớp: {job.userApply.classUser}
-                                </Box>
-                                <Box>
-                                  Sđt: {job.userApply.phone}
+                                <Box sx={{ display: 'grid', gap: 2, gridTemplateColumns: 'repeat(2, 1fr)', backgroundColor: "rgba(0,0,0,0.03)", color: "rgb(33, 43, 54)", marginBottom: 4, padding: 3, borderRadius: 4 }}>
+                                  <FormControl sx={{
+                                    textAlign: 'left',
+                                    fontSize: '14px',
+                                    color: '#757575',
+                                    fontWeight: 500,
+                                    marginTop: 1
+                                  }} >
+                                    Họ tên
+                                  </FormControl>
+                                  <FormControl sx={{ textAlign: 'right', fontSize: '14px', fontWeight: '1000', marginTop: 1 }}>
+                                    {job.userApply.fullName}
+                                  </FormControl>
+                                  <FormControl sx={{
+                                    textAlign: 'left',
+                                    fontSize: '14px',
+                                    color: '#757575',
+                                    fontWeight: 500,
+                                    marginTop: 1
+                                  }} >
+                                    Khoa
+                                  </FormControl>
+                                  <FormControl sx={{ textAlign: 'right', fontSize: '14px', fontWeight: '1000', marginTop: 1 }}>
+                                    {job.userApply.department.nameDepartment}
+                                  </FormControl>
+                                  <FormControl sx={{
+                                    textAlign: 'left',
+                                    fontSize: '14px',
+                                    color: '#757575',
+                                    fontWeight: 500,
+                                    marginTop: 1
+                                  }} >
+                                    Mã số sinh viên
+                                  </FormControl>
+                                  <FormControl sx={{ textAlign: 'right', fontSize: '14px', fontWeight: '1000', marginTop: 1 }}>
+                                    {job.userApply.mssv}
+                                  </FormControl>
+                                  <FormControl sx={{
+                                    textAlign: 'left',
+                                    fontSize: '14px',
+                                    color: '#757575',
+                                    fontWeight: 500,
+                                    marginTop: 1
+                                  }} >
+                                    Lớp
+                                  </FormControl>
+                                  <FormControl sx={{ textAlign: 'right', fontSize: '14px', fontWeight: '1000', marginTop: 1 }}>
+                                    {job.userApply.classUser}
+                                  </FormControl>
+                                  <FormControl sx={{
+                                    textAlign: 'left',
+                                    fontSize: '14px',
+                                    color: '#757575',
+                                    fontWeight: 500,
+                                    marginTop: 1
+                                  }} >
+                                    Số điện thoại
+                                  </FormControl>
+                                  <FormControl sx={{ textAlign: 'right', fontSize: '14px', fontWeight: '1000', marginTop: 1 }}>
+                                    {job.userApply.phone}
+                                  </FormControl>
                                 </Box>
                               </Box>
                             </Popover>

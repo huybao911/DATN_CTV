@@ -17,7 +17,7 @@ import { styled } from "@material-ui/core/styles";
 import { formatDistance } from "date-fns";
 import { StyledMenuItem } from "layouts/navigation/style";
 
-const Posts: React.FC = (): JSX.Element => {
+const Event: React.FC = (): JSX.Element => {
 
     const dispatch = useDispatch();
 
@@ -376,4 +376,4 @@ const Posts: React.FC = (): JSX.Element => {
     );
 };
 
-export default Posts;
+export default Event;

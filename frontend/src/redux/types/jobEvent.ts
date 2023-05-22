@@ -8,6 +8,7 @@ export interface IJobEvent {
     total: number;
     jobDescription: string;
     jobRequest: string;
+    benefit: string;
     update: string;
     delete: string;
   }

@@ -39,6 +39,7 @@ interface IInitialValues {
     unitPrice: number;
     jobDescription: string;
     jobRequest: string;
+    benefit: string;
     event: any;
 }
 
@@ -53,6 +54,7 @@ const CreateJobEvent: React.FC<Props> = ({ jobEvent }): JSX.Element => {
         unitPrice: jobEvent?.unitPrice ?? "",
         jobDescription: jobEvent?.jobDescription ?? "",
         jobRequest: jobEvent?.jobRequest ?? "",
+        benefit: jobEvent?.benefit ?? "",
         event: jobEvent?.event ?? "",
     };
 
@@ -69,6 +71,7 @@ const CreateJobEvent: React.FC<Props> = ({ jobEvent }): JSX.Element => {
         unitPrice: Yup.string().required("required!"),
         jobDescription: Yup.string().required("required!"),
         jobRequest: Yup.string().required("required!"),
+        benefit: Yup.string().required("required!"),
         event: Yup.string().required("required!"),
     });
 
@@ -201,6 +204,29 @@ const CreateJobEvent: React.FC<Props> = ({ jobEvent }): JSX.Element => {
                                     placeholder='Nhập yêu cầu công việc'
                                     helperText={touched.jobRequest ? errors.jobRequest : ""}
                                     error={touched.jobRequest ? Boolean(errors.jobRequest) : false}
+                                    inputProps={{
+                                        style: {
+                                            fontSize: '12px',
+                                        }
+                                    }}
+                                />
+                            </FormControl>
+
+                            <FormControl className={classes.formControl}>
+                                <FormLabel style={{ fontWeight: "bold", fontSize: "14px", margin: "10px 0" }}>
+                                    Quyền lợi công việc
+                                </FormLabel>
+                                <TextField
+                                    style={{ width: 300 }}
+                                    fullWidth
+                                    variant="outlined"
+                                    name='benefit'
+                                    value={values.benefit}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    placeholder='Nhập quyền lợi công việc'
+                                    helperText={touched.benefit ? errors.benefit : ""}
+                                    error={touched.benefit ? Boolean(errors.benefit) : false}
                                     inputProps={{
                                         style: {
                                             fontSize: '12px',

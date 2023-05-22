@@ -67,6 +67,12 @@ const sManagerReducer = (
         departments: action.payload,
       };
 
+    case types.GET_EVENTS:
+      return {
+        ...state,
+        events: action.payload,
+      };
+
     case types.GET_EVENTAPPROVE_SMANAGER:
       return {
         ...state,

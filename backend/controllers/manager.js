@@ -181,11 +181,11 @@ exports.getJobEvents = async (req, res) => {
 };
 
 exports.createNewJobEvent = async (req, res) => {
-  const { nameJob, event, quantity, unitPrice, jobDescription, jobRequest } = req.body;
+  const { nameJob, event, quantity, unitPrice, jobDescription, jobRequest, benefit } = req.body;
   totalJob = quantity * unitPrice;
   try {
     if (!req.manager) return res.status(400).send("You dont have permission");
-    if (!nameJob || !event || !quantity || !unitPrice || !jobDescription || !jobRequest) {
+    if (!nameJob || !event || !quantity || !unitPrice || !jobDescription || !jobRequest || !benefit) {
       return res.status(400).send("Please fill in all the required fields!")
     }
     const NewJobEvent = new JobEvent({
@@ -197,6 +197,7 @@ exports.createNewJobEvent = async (req, res) => {
       total: totalJob,
       jobDescription: jobDescription,
       jobRequest: jobRequest,
+      benefit: benefit,
     });
     await NewJobEvent.save();
 
@@ -208,7 +209,7 @@ exports.createNewJobEvent = async (req, res) => {
 
 exports.updateJobEvent = async (req, res, next) => {
   const { id } = req.params;
-  const { nameJob, event, quantity, quantityRemaining, unitPrice, jobDescription, jobRequest } = req.body;
+  const { nameJob, event, quantity, quantityRemaining, unitPrice, jobDescription, jobRequest, benefit } = req.body;
   totalJob = quantity * unitPrice;
   try {
     if (!req.manager) return res.status(400).send("You dont have permission");
@@ -222,7 +223,8 @@ exports.updateJobEvent = async (req, res, next) => {
       unitPrice: unitPrice,
       total: totalJob,
       jobDescription: jobDescription,
-      jobRequest: jobRequest
+      jobRequest: jobRequest,
+      benefit: benefit,
     };
     const newJobEvent = await JobEvent.findByIdAndUpdate(
       { _id: id },
@@ -235,6 +237,7 @@ exports.updateJobEvent = async (req, res, next) => {
         total: jobEventObj.total,
         jobDescription: jobEventObj.jobDescription,
         jobRequest: jobEventObj.jobRequest,
+        benefit: jobEventObj.benefit,
       },
       { new: true }
     );
@@ -456,7 +459,7 @@ exports.unAcceptCTV = async (req, res, next) => {
       {
         $set: {
           'usersApplyJob.$[el].acceptStatus': "Không Duyệt",
-          'usersApplyJob.$[el].notiAnotiAcceptpplyJob': "Chưa hoàn thành công việc."
+          'usersApplyJob.$[el].notiAccept': "Chưa hoàn thành công việc."
         }
       },
       { 

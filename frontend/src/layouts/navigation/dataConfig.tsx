@@ -3,6 +3,7 @@ import LeaderboardIcon from '@mui/icons-material/Leaderboard'
 import EventIcon from '@mui/icons-material/Event';
 import SchoolIcon from '@mui/icons-material/School';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import RecentActorsIcon from '@mui/icons-material/RecentActors';
 
@@ -15,7 +16,7 @@ export const dataAdmin = [
 
     {
         icon: <AccountCircleIcon style={{width: '18px'}} />,
-        name: 'User',
+        name: 'Người Dùng',
         path: '/users'
     },
     {
@@ -48,9 +49,14 @@ export const dataSManager = [
         path: '/smanager'
     },
     {
-        icon: <EventIcon style={{width: '18px'}}/>,
+        icon: <EventAvailableIcon style={{width: '18px'}}/>,
         name: 'Duyệt Sự Kiện',
         path: '/approveEvent'
+    },
+    {
+        icon: <EventIcon style={{width: '18px'}}/>,
+        name: 'Sự Kiện Đã Duyệt',
+        path: '/eventAccept'
     },
 ];
 

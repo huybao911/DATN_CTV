@@ -124,7 +124,7 @@ const FeedApplyJob: React.FC<Props> = ({ event }): JSX.Element => {
                                 {/* de rieng ra 1 component */}
                                 <Card className={classes.card}>
                                     <CardContent>
-                                        <Box sx={{ display: "flex", flexDirection: "row", marginTop: "35px", marginLeft: "35px" }}>
+                                        <Box sx={{ display: "flex", flexDirection: "row", marginTop: "22px", marginLeft: "35px" }}>
                                             <Box sx={{ fontWeight: "bold", fontSize: "21px" }}>
                                                 {event.nameEvent}
                                             </Box>
@@ -168,6 +168,10 @@ const FeedApplyJob: React.FC<Props> = ({ event }): JSX.Element => {
 
                                                 <Box sx={{ fontSize: "15px", marginTop: "10px", marginLeft: "35px" }}>
                                                     Yêu cầu: {job.jobEvent.jobRequest}
+                                                </Box>
+
+                                                <Box sx={{ fontSize: "15px", marginTop: "10px", marginLeft: "35px" }}>
+                                                    Quyền lợi: {job.jobEvent.benefit}
                                                 </Box>
                                             </Box>
                                             <Box flexGrow={1} />

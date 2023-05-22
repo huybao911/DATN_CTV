@@ -36,6 +36,9 @@ const JobEvent = new mongoose.Schema(
       required: true,
       maxLength: [8000, "Must be no more than 8000 characters"],
     },
+    benefit  : {
+      type: String,
+    },
   },
   { timestamps: true }
 );

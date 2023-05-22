@@ -18,7 +18,7 @@ router.put("/event/:id", isAuth, sManagerController.approveEvent);
 router.put("/comment/:id", isAuth, sManagerController.commentEvent);
 router.put("/comment/:eventId/:id", isAuth, sManagerController.deleteCommentEvent);
 
-router.get("/events", isAuth, sManagerController.getEvents);
+router.get("/events", isAuth, sManagerController.getEventApproveSuccess);
 router.post("/createEvent", isAuth, sManagerController.createEvent);
 router.patch("/event/:id", isAuth, sManagerController.updateEvent);
 router.delete("/event/:id", isAuth, sManagerController.deleteEvent);

@@ -43,6 +43,11 @@ interface IGetDepartments {
   payload: IDepartment[];
 }
 
+interface IGetEvent {
+  type: typeof types.GET_EVENTS;
+  payload: IEvent[];
+}
+
 interface IGetEventApprove {
   type: typeof types.GET_EVENTAPPROVE_SMANAGER;
   payload: IEvent[];
@@ -99,6 +104,7 @@ export type SManagerActions =
   | IGetUser
   | IGetUsers
   | IGetDepartments
+  | IGetEvent
   | IGetEventApprove
   | IApproveEvent
   | ICommentEvent

@@ -6,8 +6,8 @@ import { ManagerActions, ManagerAdminActions } from "redux/types/Manager";
 import { AlertActions } from "redux/types/alert";
 import types from "./types";
 
-const URI = "http://localhost:5000/api/v1/manager";
-const USER_URI = "http://localhost:5000/api/v1/user";
+const URI = "https://datnctv.onrender.com/api/v1/manager";
+const USER_URI = "https://datnctv.onrender.com/api/v1/user";
 
 // LOAD MANAGER
 export const loadManager = () => async (dispatch: Dispatch<ManagerActions>) => {

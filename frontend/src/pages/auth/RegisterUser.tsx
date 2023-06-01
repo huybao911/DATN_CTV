@@ -17,6 +17,8 @@ import { BoxInfor } from "layouts/navigation/style";
 import { IDepartment } from "redux/types/department";
 import { RootState } from "redux/reducers";
 
+import FormFieldDepartment from "pages/auth/FormDepartment_User";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -95,7 +97,7 @@ interface IInitialValues {
   email: string;
   password: string;
   confirmPassword: string;
-  nameDepartment: string;
+  department: string;
 }
 
 const Register: React.FC = (): JSX.Element => {
@@ -108,7 +110,7 @@ const Register: React.FC = (): JSX.Element => {
     email: "",
     password: "",
     confirmPassword: "",
-    nameDepartment: "",
+    department: "",
   };
   const [departments, setDepartments] = React.useState<IDepartment[]>([]);
   const Department = useSelector((state: RootState) => state.admin);
@@ -300,7 +302,7 @@ const Register: React.FC = (): JSX.Element => {
                       />
 
 
-                      <Select
+                      {/* <Select
                         name="nameDepartment"
                         fullWidth
                         displayEmpty
@@ -322,7 +324,8 @@ const Register: React.FC = (): JSX.Element => {
                         {departments?.map((department: any) => {
                           return <MenuItem style={{ fontSize: '13px' }} value={department.nameDepartment} key={department._id}> {department.nameDepartment} </MenuItem>
                         })}
-                      </Select>
+                      </Select> */}
+                       <FormFieldDepartment isDepartmentCbb={true} />
                     </Box>
                     <Button
                       fullWidth

@@ -6,8 +6,8 @@ import { SManagerActions, SManagerAdminActions } from "redux/types/sManager";
 import { AlertActions } from "redux/types/alert";
 import types from "./types";
 
-const URI = "http://localhost:5000/api/v1/smanager";
-const USER_URI = "http://localhost:5000/api/v1/user";
+const URI = "https://datnctv.onrender.com/api/v1/smanager";
+const USER_URI = "https://datnctv.onrender.com/api/v1/user";
 
 // LOAD SMANAGER
 export const loadSManager = () => async (dispatch: Dispatch<SManagerActions>) => {

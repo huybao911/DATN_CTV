@@ -6,7 +6,7 @@ import { UserActions } from "redux/types/user";
 import { AlertActions } from "redux/types/alert";
 import { setAlert } from "./alert";
 
-const URI = "http://localhost:5000/api/v1/user";
+const URI = "https://datnctv.onrender.com/api/v1/user";
 
 // LOAD USER
 export const loadUser = () => async (dispatch: Dispatch<UserActions>) => {

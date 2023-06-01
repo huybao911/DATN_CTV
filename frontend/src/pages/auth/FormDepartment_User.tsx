@@ -1,8 +1,8 @@
 import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { FormControl, FormLabel, MenuItem, Select } from "@material-ui/core";
 import { useFormikContext } from "formik";
+import { MenuItem, FormControl, FormLabel, Select, Box, InputLabel } from "@material-ui/core";
 
 import { getDepartments } from "redux/actions/user";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,11 +15,19 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: theme.spacing(1.5),
     },
     formControl: {
-        margin: theme.spacing(2, 0),
+        margin: theme.spacing(0, 0),
     },
     placeholder: {
         color: "#aaa"
-    }
+    },
+    selectStyle: {
+        fontSize: '13px',
+        marginBottom: '28px',
+
+        "& fieldset": {
+            borderRadius: "10px",
+        },
+    },
 }));
 
 type Props = {
@@ -27,7 +35,7 @@ type Props = {
 };
 
 interface IInitialValues {
-    department: string;
+    department: any;
 }
 
 // const Placeholder = ({ children }: { children: any }) => {
@@ -43,7 +51,8 @@ const FormField: React.FC<Props> = ({ isDepartmentCbb = false }): JSX.Element =>
         useFormikContext<IInitialValues>();
 
     const [departments, setDepartments] = React.useState<IDepartment[]>([]);
-    const Department = useSelector((state: RootState) => state.admin);
+    const Department = useSelector((state: RootState) => state.user);
+
 
     React.useEffect(() => {
         dispatch(getDepartments());
@@ -55,26 +64,36 @@ const FormField: React.FC<Props> = ({ isDepartmentCbb = false }): JSX.Element =>
 
     return (
         <>
+
             {isDepartmentCbb ? (
                 <FormControl fullWidth className={classes.formControl}>
-                    <FormLabel classes={{ root: classes.formLabel }}>Khoa</FormLabel>
+                    <InputLabel id="sub-category" style={{ fontSize: '13px', paddingLeft:"10px" }}>Vui lòng chọn khoa</InputLabel>
                     <Select
-                        name="department"
-                        labelId="demo-simple-select-label"
+                        fullWidth
+                        displayEmpty
+                        name="department._id"
+                        labelId="sub-category"
                         id="handle-department"
-                        value={values.department}
+                        value={values.department._id}
+                        className={classes.selectStyle}
                         onChange={handleChange}
                         onBlur={handleBlur}
                         error={touched.department ? Boolean(errors.department) : false}
-
-                    // renderValue={
-                    //     role !== "" ? undefined : () => <Placeholder>Role</Placeholder>
-                    // }
+                        variant={'outlined'}
+                        MenuProps={{
+                            PaperProps: {
+                                style: {
+                                    fontSize: 10,
+                                },
+                            },
+                        }}
                     >
                         {departments?.map((department: any) => (
+
                             <MenuItem value={department._id} key={department._id}>
                                 {department.nameDepartment}
                             </MenuItem>
+
                         ))}
                     </Select>
                 </FormControl>

@@ -271,7 +271,7 @@ app.put("/api/v1/user/profile/:id", upload.single("avatar"), isAuthUser, async (
 
 app.use("/api/v1/user", require("./routes/user"));
 app.use("/api/v1/smanager", require("./routes/superManager"));
-app.use("/api/v1/manager", require("./routes/Manager"));
+app.use("/api/v1/manager", require("./routes/manager"));
 app.use("/api/v1/admin", require("./routes/admin"));
 
 module.exports = app;
